@@ -1,19 +1,19 @@
 <script setup lang="ts">
-const route = useRoute()
-
 const items = computed(() => [{
-  label: 'Docs',
-  to: '/docs',
-  active: route.path.startsWith('/docs')
+  label: 'Home',
+  to: '/'
 }, {
-  label: 'Pricing',
-  to: '/pricing'
+  label: 'About',
+  to: '/about'
 }, {
-  label: 'Blog',
-  to: '/blog'
+  label: 'Conference Chair',
+  to: '/conference-chair'
 }, {
-  label: 'Changelog',
-  to: '/changelog'
+  label: 'Scientific Committee',
+  to: '/scientific-committee'
+}, {
+  label: 'Student Posters',
+  to: '/student-posters'
 }])
 </script>
 
@@ -21,9 +21,8 @@ const items = computed(() => [{
   <UHeader>
     <template #left>
       <NuxtLink to="/">
-        <AppLogo class="w-auto h-6 shrink-0" />
+        <AppLogo class="w-auto h-12 shrink-0" />
       </NuxtLink>
-      <TemplateMenu />
     </template>
 
     <UNavigationMenu
@@ -32,30 +31,13 @@ const items = computed(() => [{
     />
 
     <template #right>
-      <UColorModeButton />
-
       <UButton
-        icon="i-lucide-log-in"
-        color="neutral"
-        variant="ghost"
-        to="/login"
-        class="lg:hidden"
-      />
-
-      <UButton
-        label="Sign in"
-        color="neutral"
-        variant="outline"
-        to="/login"
-        class="hidden lg:inline-flex"
-      />
-
-      <UButton
-        label="Sign up"
-        color="neutral"
+        label="Register now"
+        color="primary"
+        disabled
         trailing-icon="i-lucide-arrow-right"
         class="hidden lg:inline-flex"
-        to="/signup"
+        to="/register"
       />
     </template>
 
@@ -69,18 +51,11 @@ const items = computed(() => [{
       <USeparator class="my-6" />
 
       <UButton
-        label="Sign in"
-        color="neutral"
-        variant="subtle"
-        to="/login"
-        block
-        class="mb-3"
-      />
-      <UButton
-        label="Sign up"
+        label="Register now"
         color="neutral"
         to="/signup"
         block
+        disabled
       />
     </template>
   </UHeader>

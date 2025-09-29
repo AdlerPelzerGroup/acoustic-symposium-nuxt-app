@@ -1,88 +1,69 @@
 <script setup lang="ts">
 const columns = [{
-  label: 'Resources',
+  label: 'Links',
   children: [{
-    label: 'Help center'
+    label: 'LinkedIn',
+    to: 'https://www.linkedin.com/company/adler-pelzer-group/'
   }, {
-    label: 'Docs'
-  }, {
-    label: 'Roadmap'
-  }, {
-    label: 'Changelog'
-  }]
-}, {
-  label: 'Features',
-  children: [{
-    label: 'Affiliates'
-  }, {
-    label: 'Portal'
-  }, {
-    label: 'Jobs'
-  }, {
-    label: 'Sponsors'
+    label: 'YouTube',
+    to: 'https://www.youtube.com/@AdlerPelzerGroup'
   }]
 }, {
   label: 'Company',
   children: [{
-    label: 'About'
+    label: 'About Us',
+    to: 'https://www.adlerpelzer.com/about-us/'
   }, {
-    label: 'Pricing'
+    label: 'Products & Technologies',
+    to: 'https://www.adlerpelzer.com/products-technologies/'
   }, {
-    label: 'Careers'
+    label: 'Mission & Vision',
+    to: 'https://www.adlerpelzer.com/mission-vision'
   }, {
-    label: 'Blog'
+    label: 'Careers',
+    to: 'https://www.adlerpelzer.com/careers/'
+  }]
+}, {
+  label: 'Acoustic Symposium',
+  children: [{
+    label: 'About',
+    to: '/about'
+  }, {
+    label: 'Conference Chair',
+    to: '/conference-chair'
+  }, {
+    label: 'Scientific Committee',
+    to: '/scientific-committee'
+  }, {
+    label: 'Student Posters',
+    to: '/student-posters'
+  }, {
+    label: 'Register',
+    to: '/register',
+    disabled: true
   }]
 }]
-
-const toast = useToast()
-
-const email = ref('')
-const loading = ref(false)
-
-function onSubmit() {
-  loading.value = true
-
-  toast.add({
-    title: 'Subscribed!',
-    description: 'You\'ve been subscribed to our newsletter.'
-  })
-}
 </script>
 
 <template>
-  <USeparator
-    icon="i-simple-icons-nuxtdotjs"
-    class="h-px"
-  />
+  <USeparator class="h-px" />
 
   <UFooter :ui="{ top: 'border-b border-default' }">
     <template #top>
       <UContainer>
         <UFooterColumns :columns="columns">
-          <template #right>
-            <form @submit.prevent="onSubmit">
-              <UFormField
-                name="email"
-                label="Subscribe to our newsletter"
-                size="lg"
-              >
-                <UInput
-                  v-model="email"
-                  type="email"
-                  class="w-full"
-                  placeholder="Enter your email"
-                >
-                  <template #trailing>
-                    <UButton
-                      type="submit"
-                      size="xs"
-                      color="neutral"
-                      label="Subscribe"
-                    />
-                  </template>
-                </UInput>
-              </UFormField>
-            </form>
+          <template #left>
+            <div class="text-sm text-muted">
+              <div class="mb-4 font-semibold">
+                Adler Pelzer Holding GmbH
+              </div>
+              Kabeler Str. 4<br>
+              58099 Hagen<br>
+              Germany<br>
+              <br>
+              Phone: +49 2331 6978 0<br>
+              Email: info(at)adlerpelzer.com
+            </div>
           </template>
         </UFooterColumns>
       </UContainer>
@@ -90,35 +71,12 @@ function onSubmit() {
 
     <template #left>
       <p class="text-muted text-sm">
-        Built with Nuxt UI • © {{ new Date().getFullYear() }}
+        Adler Pelzer Group • © {{ new Date().getFullYear() }}
       </p>
     </template>
 
     <template #right>
-      <UButton
-        to="https://go.nuxt.com/discord"
-        target="_blank"
-        icon="i-simple-icons-discord"
-        aria-label="Nuxt on Discord"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://go.nuxt.com/x"
-        target="_blank"
-        icon="i-simple-icons-x"
-        aria-label="Nuxt on X"
-        color="neutral"
-        variant="ghost"
-      />
-      <UButton
-        to="https://github.com/nuxt-ui-templates/saas"
-        target="_blank"
-        icon="i-simple-icons-github"
-        aria-label="Nuxt UI on GitHub"
-        color="neutral"
-        variant="ghost"
-      />
+      <UColorModeButton />
     </template>
   </UFooter>
 </template>
